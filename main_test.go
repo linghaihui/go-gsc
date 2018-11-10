@@ -25,9 +25,9 @@ func Test_GetGSC30(t *testing.T)  {
 }
 
 func Test_GSCQuery(t *testing.T)  {
-	fmt.Println(models.GSCQuery("宴山亭"))
+	fmt.Println(models.GSCQuery("宴山"))
 }
 
 func Test_GSCQueryLike(t *testing.T)  {
-	fmt.Println(models.GSCQueryLike("宴山亭", "123"))
+	fmt.Println(models.GSCQueryLike("宴山", "123"))
 }
