@@ -1,0 +1,8 @@
+language: go
+go:
+  - "1.11.1"
+services:
+  - docker
+script:
+  - docker build -t docker.haihui.site/gogsc:0.1 .
+  - docker push docker.haihui.site/gogsc:0.1
