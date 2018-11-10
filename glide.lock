@@ -1,5 +1,5 @@
-hash: 5786182beee919a20405742e937ce2ecb30b6f886c81b096d989c8076580041c
-updated: 2018-11-10T19:17:54.854708+08:00
+hash: 6429c5486cdf864f147fc819fc5906e4366881f8c9663050af392ce283435521
+updated: 2018-11-11T02:21:22.449515+08:00
 imports:
 - name: github.com/gin-contrib/sse
   version: 22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae
@@ -19,11 +19,6 @@ imports:
   version: 05d041de1043ba04b678fb046bd35455a9b1b33b
 - name: github.com/mattn/go-isatty
   version: 3fb116b820352b7f0c281308a4d6250c22d94e27
-- name: github.com/medivhzhan/weapp
-  version: fae28768ab2ae7d5d3d22a1592ee47fb57212ef6
-  subpackages:
-  - util
-  - util/ecb
 - name: github.com/modern-go/concurrent
   version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
 - name: github.com/modern-go/reflect2

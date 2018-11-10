@@ -1,0 +1,17 @@
+---
+- hosts: aliyun
+  remote_user: root
+  tasks:
+    - name: deploy web
+      docker_container:
+        name: web
+        image: docker.haihui.site/gogsc:0.1
+        state: started
+        pull: true
+        env:
+          wxAppId: $wxAppId
+          wxappSecret: $wxappSecret
+          listenAddr: $listenAddr
+          mysqlDSN: $mysqlDSN
+        published_ports:
+          - "8080:8080"

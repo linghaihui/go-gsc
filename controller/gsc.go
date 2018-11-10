@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gogsc/models"
+	"github.com/linghaihui/gogsc/models"
 	"github.com/gin-gonic/gin"
 	"strconv"
 )

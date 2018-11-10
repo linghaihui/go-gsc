@@ -56,4 +56,3 @@ func GetConf(name string) interface{} {
 func GetConfStr(name string) string  {
 	return os.Getenv(name)
 }
-

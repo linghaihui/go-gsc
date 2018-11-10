@@ -4,8 +4,6 @@ import:
   version: v1.3.0
 - package: github.com/go-sql-driver/mysql
   version: v1.4.0
-- package: github.com/medivhzhan/weapp
-  version: v1.1.1
 - package: google.golang.org/appengine
   repo: https://github.com/golang/appengine
   vcs: git

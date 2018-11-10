@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"gogsc/util"
+	"github.com/linghaihui/gogsc/util"
 	"fmt"
-	"gogsc/controller"
+	"github.com/linghaihui/gogsc/controller"
 )
 
 func setRoute(r *gin.Engine){

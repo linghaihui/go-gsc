@@ -1,12 +1,11 @@
 package models
 
 import (
-	"gogsc/util"
+	"github.com/linghaihui/gogsc/util"
 	"fmt"
 	"crypto/rand"
 	"math/big"
 	"database/sql"
-	"github.com/medivhzhan/weapp"
 	"strings"
 )
 
@@ -49,13 +48,28 @@ type GSC struct {
 
 type ReturnOpenId struct {
 	Code int8 `json:"code"`
-	Data weapp.LoginResponse `json:"data"`
+	Data LoginResponse `json:"data"`
 }
 
 type ReturnLike struct {
 	Code int8 `json:"code"`
 	Data string `json:"data"`
-} 
+}
+
+type Response struct {
+	Errcode int    `json:"errcode"`
+	Errmsg  string `json:"errmsg"`
+}
+type LoginResponse struct {
+	OpenID     string `json:"openid"`
+	SessionKey string `json:"session_key"`
+	UnionID string `json:"unionid"`
+}
+
+type LLoginResponse struct {
+	Response
+	LoginResponse
+}
 
 func processRows(rows *sql.Rows) []GSC  {
 	var GSCS []GSC
