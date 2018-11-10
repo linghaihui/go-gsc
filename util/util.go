@@ -54,6 +54,6 @@ func GetConf(name string) interface{} {
 }
 
 func GetConfStr(name string) string  {
-	return fmt.Sprintf("%v", GetConf(name))
+	return os.Getenv(name)
 }
 

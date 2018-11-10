@@ -18,7 +18,7 @@ func setRoute(r *gin.Engine){
 }
 func main()  {
 	r := gin.Default()
-	gin.SetMode(gin.DebugMode)
+	gin.SetMode(gin.ReleaseMode)
 	setRoute(r)
 	listenAddr := fmt.Sprintf("%v", util.GetConf("listenAddr"))
 	r.Run(listenAddr)
