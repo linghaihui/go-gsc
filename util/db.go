@@ -9,7 +9,7 @@ var MysqlDSN string
 var DB *sql.DB
 
 func init() {
-	InitConf()
+	// InitConf()
 	MysqlDSN = GetConfStr("mysqlDSN")
 	DB = GetDB()
 }

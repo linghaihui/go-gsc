@@ -20,6 +20,6 @@ func main()  {
 	r := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
 	setRoute(r)
-	listenAddr := fmt.Sprintf("%v", util.GetConf("listenAddr"))
+	listenAddr := fmt.Sprintf("%v", util.GetConfStr("listenAddr"))
 	r.Run(listenAddr)
 }
