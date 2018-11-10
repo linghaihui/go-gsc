@@ -9,9 +9,9 @@
         state: started
         pull: true
         env:
-          wxAppId: $wxAppId
-          wxappSecret: $wxappSecret
-          listenAddr: $listenAddr
-          mysqlDSN: $mysqlDSN
+          wxAppId: "{{wxAppId}}"
+          wxappSecret: "{{wxappSecret}}"
+          listenAddr: "{{listenAddr}}"
+          mysqlDSN: "{{mysqlDSN}}"
         published_ports:
           - "8080:8080"

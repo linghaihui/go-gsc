@@ -2,10 +2,10 @@ package main
 
 import (
 	"testing"
-	"gogsc/util"
-	"gogsc/models"
+	"github.com/linghaihui/gogsc/util"
+	"github.com/linghaihui/gogsc/models"
 	"fmt"
-	"gogsc/controller"
+	"github.com/linghaihui/gogsc/controller"
 )
 
 func Test_DB(t *testing.T)  {
