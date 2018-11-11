@@ -2,6 +2,11 @@
 - hosts: aliyun
   remote_user: root
   tasks:
+    - name: docker login
+      docker_login:
+        username: "{{docker_user}}"
+        password: "{{docker_passwd}}"
+        registry: docker.haihui.site
     - name: deploy web
       docker_container:
         name: web
