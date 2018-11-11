@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/linghaihui/gogsc.svg?branch=master)](https://travis-ci.com/linghaihui/gogsc)
 # 说明
 - 微信小程序`i古诗词`服务端的golang实现
 - 使用[travis](https://travis-ci.com/)和[ansible](https://www.ansible.com/)实现自动化部署到docker
