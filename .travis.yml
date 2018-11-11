@@ -4,9 +4,9 @@ go:
 services:
   - docker
 script:
-  - docker build -t docker.haihui.site/gogsc:$TRAVIS_TAG .
+  - docker build -t docker.haihui.site/gogsc:release-$TRAVIS_JOB_ID .
   - docker login -u$USER -p$PASSWD docker.haihui.site
-  - docker push docker.haihui.site/gogsc:$TRAVIS_TAG
+  - docker push docker.haihui.site/gogsc:release-$TRAVIS_JOB_ID
   - sudo apt-get install python
   - sudo pip install docker ansible
   - sudo chmod 755 deploy.sh
