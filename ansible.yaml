@@ -2,12 +2,19 @@
 - hosts: aliyun
   remote_user: root
   tasks:
+    - name: docker login
+      docker_login:
+        username: "{{docker_user}}"
+        password: "{{docker_passwd}}"
+        registry: docker.haihui.site
     - name: deploy web
       docker_container:
         name: web
-        image: docker.haihui.site/gogsc:0.1
+        image: docker.haihui.site/gogsc:{{tag}}
         state: started
         pull: true
+        restart: true
+        restart_policy: always
         env:
           wxAppId: "{{wxAppId}}"
           wxappSecret: "{{wxappSecret}}"
