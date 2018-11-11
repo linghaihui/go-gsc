@@ -3,29 +3,24 @@ go:
   - "1.11.1"
 services:
   - docker
-script:
+
+addons:
+  ssh_known_hosts: 123.56.24.251
+
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_1a092584ba06_key -iv $encrypted_1a092584ba06_iv -in id_rsa.enc -out id_rsa -d
+  - chmod 600 id_rsa
+  - eval $(ssh-agent)
+  - ssh-add id_rsa
   - docker build -t docker.haihui.site/gogsc:release-$TRAVIS_JOB_ID .
   - docker login -u$USER -p$PASSWD docker.haihui.site
   - docker push docker.haihui.site/gogsc:release-$TRAVIS_JOB_ID
   - sudo apt-get install python
   - sudo pip install docker ansible
   - sudo chmod 755 deploy.sh
-  on:
-      tags: true
-before_install:
-  - openssl aes-256-cbc -K $encrypted_1a092584ba06_key -iv $encrypted_1a092584ba06_iv -in id_rsa.enc -out id_rsa -d
-  - chmod 600 id_rsa
-  - eval $(ssh-agent)
-  - ssh-add id_rsa
-  on:
-      tags: true
-addons:
-  ssh_known_hosts: 123.56.24.251
-before_deploy:
   - git add .
   - git commit -m 'add id_rsa'
-  on:
-      tags: true
+
 deploy:
   provider: script
   script: ./deploy.sh
