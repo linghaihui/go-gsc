@@ -18,7 +18,7 @@ func GetPrevDir(path string) string {
 
 // InitConf ...
 func InitConf() {
-	if len(Confs) !=0{
+	if len(Confs) != 0 {
 		fmt.Println(Confs)
 		return
 	}
@@ -53,6 +53,6 @@ func GetConf(name string) interface{} {
 	return Confs[name]
 }
 
-func GetConfStr(name string) string  {
+func GetConfStr(name string) string {
 	return os.Getenv(name)
 }

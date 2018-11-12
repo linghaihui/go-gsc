@@ -2,6 +2,7 @@ package util
 
 import (
 	"database/sql"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -14,8 +15,8 @@ func init() {
 	DB = GetDB()
 }
 
-func GetDB()  *sql.DB{
-	DB , err := sql.Open("mysql", MysqlDSN)
+func GetDB() *sql.DB {
+	DB, err := sql.Open("mysql", MysqlDSN)
 	if err != nil {
 		DB = nil
 	}

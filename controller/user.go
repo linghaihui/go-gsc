@@ -1,33 +1,34 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/linghaihui/gogsc/util"
-	"fmt"
-	"github.com/linghaihui/gogsc/models"
-	"net/http"
 	"crypto/tls"
-	"errors"
 	"encoding/json"
+	"errors"
+	"fmt"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/linghaihui/gogsc/models"
+	"github.com/linghaihui/gogsc/util"
 )
 
-func Code2Session(ctx *gin.Context)  {
+func Code2Session(ctx *gin.Context) {
 	code := ctx.Param("code")
 	wxappId := util.GetConfStr("wxAppId")
-	wxappSecret:=util.GetConfStr("wxappSecret")
-	url:= fmt.Sprintf("https://api.weixin.qq.com/sns/jscode2session?appid=%s&grant_type=authorization_code&js_code=%s&secret=%s", wxappId, code, wxappSecret)
-	res, err:=Get(url)
-	if err!=nil{
+	wxappSecret := util.GetConfStr("wxappSecret")
+	url := fmt.Sprintf("https://api.weixin.qq.com/sns/jscode2session?appid=%s&grant_type=authorization_code&js_code=%s&secret=%s", wxappId, code, wxappSecret)
+	res, err := Get(url)
+	if err != nil {
 		fmt.Println(err)
 	}
-	ctx.JSON(200, models.ReturnOpenId{Code: 0, Data:res})
+	ctx.JSON(200, models.ReturnOpenId{Code: 0, Data: res})
 }
 
-func Get(url string) (lres models.LoginResponse, err error){
-	tr := &http.Transport{TLSClientConfig:&tls.Config{InsecureSkipVerify:true}}
-	client := &http.Client{Transport:tr}
-	resp, err:= client.Get(url)
-	if err!=nil{
+func Get(url string) (lres models.LoginResponse, err error) {
+	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
+	client := &http.Client{Transport: tr}
+	resp, err := client.Get(url)
+	if err != nil {
 		fmt.Println(err)
 	}
 	defer resp.Body.Close()
@@ -45,4 +46,3 @@ func Get(url string) (lres models.LoginResponse, err error){
 	lres = data.LoginResponse
 	return
 }
-

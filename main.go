@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/linghaihui/gogsc/util"
 	"fmt"
+
+	"github.com/gin-gonic/gin"
 	"github.com/linghaihui/gogsc/controller"
+	"github.com/linghaihui/gogsc/util"
 )
 
-func setRoute(r *gin.Engine){
+func setRoute(r *gin.Engine) {
 	r.GET("/songci/index/:id/:open_id", controller.HandleIndex)
 	r.GET("/songci/query/:q/:page/:open_id", controller.HandleQuery)
 	r.GET("/user/auth/:code", controller.Code2Session)
@@ -16,7 +17,7 @@ func setRoute(r *gin.Engine){
 	r.GET("/songci/mylike/:open_id", controller.QueryMyLike)
 
 }
-func main()  {
+func main() {
 	r := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
 	setRoute(r)
