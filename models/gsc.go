@@ -122,7 +122,7 @@ func GetGSC30() []GSC {
 	rows, err := util.DB.Query(
 		"select id, work_title, work_author, work_dynasty, content, "+
 			"translation, intro, annotation_, foreword, appreciation, "+
-			"master_comment, layout, audio_id from gsc where id > ?  order by audio_id desc limit 20", RandID)
+			"master_comment, layout, audio_id from gsc where id > ? and  audio_id > 0 order by audio_id desc limit 20", RandID)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -141,7 +141,7 @@ func GSCQuery(q string) []GSC {
 			fmt.Println(err)
 		}
 	} else {
-		result, _ := rand.Int(rand.Reader, big.NewInt(3000))
+		result, _ := rand.Int(rand.Reader, big.NewInt(1000))
 		RandID := result.Int64()
 		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, "+
 			"content, `translation`, intro, annotation_, foreword, appreciation, "+
