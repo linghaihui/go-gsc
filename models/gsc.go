@@ -1,10 +1,8 @@
 package models
 
 import (
-	"crypto/rand"
 	"database/sql"
 	"fmt"
-	"math/big"
 	"strings"
 
 	"github.com/linghaihui/gogsc/util"
@@ -115,14 +113,12 @@ func GetGSCById(id int64, open_id string) GSC {
 	return *gsc
 }
 
-// GetGSC30 获取随机30条数据
+// GetGSC30 获取随机20条数据
 func GetGSC30() []GSC {
-	result, _ := rand.Int(rand.Reader, big.NewInt(8069))
-	RandID := result.Int64()
 	rows, err := util.DB.Query(
-		"select id, work_title, work_author, work_dynasty, content, "+
-			"translation, intro, annotation_, foreword, appreciation, "+
-			"master_comment, layout, audio_id from gsc where id > ? and  audio_id > 0 limit 20", RandID)
+		"select id, work_title, work_author, work_dynasty, content, " +
+			"translation, intro, annotation_, foreword, appreciation, " +
+			"master_comment, layout, audio_id from gsc where audio_id > 0 order by rand() limit 20")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -141,12 +137,10 @@ func GSCQuery(q string) []GSC {
 			fmt.Println(err)
 		}
 	} else {
-		result, _ := rand.Int(rand.Reader, big.NewInt(1000))
-		RandID := result.Int64()
-		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, "+
-			"content, `translation`, intro, annotation_, foreword, appreciation, "+
-			"master_comment, layout, audio_id from gsc "+
-			"where audio_id > 0 and id > ? limit 88", RandID)
+		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, " +
+			"content, `translation`, intro, annotation_, foreword, appreciation, " +
+			"master_comment, layout, audio_id from gsc " +
+			"where audio_id > 0 order by rand() limit 88")
 		if err != nil {
 			fmt.Println(err)
 		}
