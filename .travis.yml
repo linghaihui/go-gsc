@@ -5,7 +5,7 @@ services:
   - docker
 
 addons:
-  ssh_known_hosts: 123.56.24.251
+  ssh_known_hosts: 123.56.24.251 49.234.18.99
 
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_1a092584ba06_key -iv $encrypted_1a092584ba06_iv -in id_rsa.enc -out id_rsa -d
