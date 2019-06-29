@@ -129,10 +129,10 @@ func GSCQuery(q string) []GSC {
 	var rows *sql.Rows
 	var err error
 	if q != "音频" {
-		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, "+
-			"content, `translation`, intro, annotation_, foreword, appreciation, "+
-			"master_comment, layout, audio_id from gsc "+
-			" where match(work_author, work_title, work_dynasty, content) against ('?' in natural language mode)", q)
+		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, " +
+			"content, `translation`, intro, annotation_, foreword, appreciation, " +
+			"master_comment, layout, audio_id from gsc " +
+			" where match(work_author, work_title, work_dynasty, content) against ('+" + q + "' in  boolean mode)")
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -166,11 +166,9 @@ func GSCQueryLike(q string, open_id string) []GSC {
 	gscids_str := strings.Join(gscids, ",")
 	if q != "" {
 		rows, err = util.DB.Query(
-			"select id, work_title, work_author, work_dynasty, content, "+
-				"translation, intro, annotation_, foreword, appreciation, master_comment, layout,"+
-				"audio_id from gsc where id in ("+gscids_str+") and (work_title like ? "+
-				" or work_author like ? ) order by audio_id desc",
-			"%"+q+"%", "%"+q+"%")
+			"select id, work_title, work_author, work_dynasty, content, " +
+				"translation, intro, annotation_, foreword, appreciation, master_comment, layout," +
+				"audio_id from gsc where match(work_author, work_title, work_dynasty, content) against ('+" + q + "' in boolean mode) and id in (" + gscids_str + ") order by audio_id desc ")
 		if err != nil {
 			fmt.Println(err)
 		}
