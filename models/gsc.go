@@ -132,7 +132,7 @@ func GSCQuery(q string) []GSC {
 		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, " +
 			"content, `translation`, intro, annotation_, foreword, appreciation, " +
 			"master_comment, layout, audio_id from gsc " +
-			" where match(work_author, work_title, work_dynasty, content) against ('+" + q + "' in  boolean mode)")
+			" where match(work_author, work_title, work_dynasty, content) against ('+" + q + "' in  boolean mode) order by audio_id desc")
 		if err != nil {
 			fmt.Println(err)
 		}
