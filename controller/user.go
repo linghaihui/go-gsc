@@ -8,8 +8,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/linghaihui/gogsc/models"
-	"github.com/linghaihui/gogsc/util"
+	"github.com/linghaihui/go-gsc/models"
+	"github.com/linghaihui/go-gsc/util"
 )
 
 func Code2Session(ctx *gin.Context) {

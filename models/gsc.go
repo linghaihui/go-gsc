@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/linghaihui/gogsc/util"
+	"github.com/linghaihui/go-gsc/util"
 )
 
 type ReturnDataList struct {

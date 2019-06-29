@@ -12,9 +12,9 @@ before_deploy:
   - chmod 600 id_rsa
   - eval $(ssh-agent)
   - ssh-add id_rsa
-  - docker build -t docker.haihui.site/gogsc:release-$TRAVIS_JOB_ID .
+  - docker build -t docker.haihui.site/go-gsc:release-$TRAVIS_JOB_ID .
   - docker login -u$USER -p$PASSWD docker.haihui.site
-  - docker push docker.haihui.site/gogsc:release-$TRAVIS_JOB_ID
+  - docker push docker.haihui.site/go-gsc:release-$TRAVIS_JOB_ID
   - sudo apt-get install python
   - sudo pip install docker ansible
   - sudo chmod 755 deploy.sh

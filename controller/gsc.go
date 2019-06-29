@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/linghaihui/gogsc/models"
+	"github.com/linghaihui/go-gsc/models"
 )
 
 func GetGSCById(id int64, open_id string) models.GSC {

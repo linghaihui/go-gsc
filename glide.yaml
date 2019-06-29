@@ -1,4 +1,4 @@
-package: gogsc
+package: go-gsc
 import:
 - package: github.com/gin-gonic/gin
   version: v1.3.0

@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"github.com/linghaihui/gogsc/util"
+	"github.com/linghaihui/go-gsc/util"
 )
 
 func Test_DB(t *testing.T) {

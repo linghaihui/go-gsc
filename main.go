@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/linghaihui/gogsc/controller"
-	"github.com/linghaihui/gogsc/util"
+	"github.com/linghaihui/go-gsc/controller"
+	"github.com/linghaihui/go-gsc/util"
 )
 
 func setRoute(r *gin.Engine) {
