@@ -1,5 +1,5 @@
 ---
-- hosts: aliyun
+- hosts: ali_q_cloud
   remote_user: root
   tasks:
     - name: docker login
