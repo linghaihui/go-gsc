@@ -113,12 +113,12 @@ func GetGSCById(id int64, open_id string) GSC {
 	return *gsc
 }
 
-// GetGSC30 获取随机20条数据
+// GetGSC30 获取随机30条数据
 func GetGSC30() []GSC {
 	rows, err := util.DB.Query(
 		"select id, work_title, work_author, work_dynasty, content, " +
 			"translation, intro, annotation_, foreword, appreciation, " +
-			"master_comment, layout, audio_id from gsc where audio_id > 0 order by rand() limit 20")
+			"master_comment, layout, audio_id from gsc where audio_id > 0 order by rand() limit 30")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -132,7 +132,7 @@ func GSCQuery(q string) []GSC {
 		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, "+
 			"content, `translation`, intro, annotation_, foreword, appreciation, "+
 			"master_comment, layout, audio_id from gsc "+
-			"where work_title like ? or work_author like ? order by audio_id desc", "%"+q+"%", "%"+q+"%")
+			" where match(work_author, work_title, work_dynasty, content) against ('?' in natural language mode)", q)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -140,7 +140,7 @@ func GSCQuery(q string) []GSC {
 		rows, err = util.DB.Query("select id, work_title, work_author, work_dynasty, " +
 			"content, `translation`, intro, annotation_, foreword, appreciation, " +
 			"master_comment, layout, audio_id from gsc " +
-			"where audio_id > 0 order by rand() limit 88")
+			"where audio_id > 0 order by rand() limit 100")
 		if err != nil {
 			fmt.Println(err)
 		}
